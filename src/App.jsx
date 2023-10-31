@@ -7,27 +7,29 @@ import Header from './components/Header/Header'
 function App() {
   const [cartData, setCartData] = useState([]);
   const [creditHour, setCreditHour] = useState(0);
-  const [remainingHour, setRemainingHour] = useState(20)
+  const [remainingHour, setRemainingHour] = useState(20);
+  const [totalPrice, setTotalPrice] = useState(0);
   const handleSelectBtn = (id) => {
     let totalCreditHour = parseFloat(creditHour) + parseFloat(id.credit_hours);
     let remaining = remainingHour - parseFloat(id.credit_hours);
+    let price = totalPrice + parseInt(id.price)
     let isAvailable = cartData.find(data => data.id === id.id);
     if (!isAvailable) {
       const newCart = [...cartData, id];
-      // setCartData(newCart);
       if (totalCreditHour > 20) {
-        alert("Credit hour time over")
+        alert("Credit hour time exceeded");
       }
       else {
         setCreditHour(totalCreditHour);
-        setRemainingHour(remaining)
+        setRemainingHour(remaining);
         setCartData(newCart);
+        setTotalPrice(price)
 
       }
 
     }
     else {
-      alert("Tis Course is already addeded");
+      alert("This Course is already added");
     }
   }
   return (
@@ -38,7 +40,7 @@ function App() {
           <Card handleSelectBtn={handleSelectBtn}></Card>
         </div>
         <div className='relative'>
-          <Cart cartData={cartData} creditHour={creditHour} remainingHour={remainingHour}></Cart>
+          <Cart cartData={cartData} creditHour={creditHour} remainingHour={remainingHour} totalPrice={totalPrice}></Cart>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import Item from "./Item/Item";
-const Cart = ({ cartData, creditHour, remainingHour }) => {
+const Cart = ({ cartData, creditHour, remainingHour, totalPrice }) => {
     // console.log(cartData)
     return (
         <div className="mt-5 sticky top-4">
@@ -16,12 +16,15 @@ const Cart = ({ cartData, creditHour, remainingHour }) => {
             <hr />
             <h2 className="text-base font-medium my-4">Total Credit Hour : {creditHour} </h2>
             <hr />
-            <h2 className="text-base font-bold my-4">Total Price : </h2>
+            <h2 className="text-base font-bold my-4">Total Price : {totalPrice}</h2>
 
         </div>
     );
 };
 Cart.propTypes = {
-    cartData: PropTypes.array.isRequired
+    cartData: PropTypes.array.isRequired,
+    creditHour: PropTypes.number,
+    remainingHour: PropTypes.number,
+    totalPrice: PropTypes.number
 }
 export default Cart;
