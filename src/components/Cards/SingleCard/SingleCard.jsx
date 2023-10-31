@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { FiDollarSign } from "react-icons/fi";
 import { GoBook } from "react-icons/go";
-const SingleCard = ({ course }) => {
-    console.log(course)
+const SingleCard = ({ course, handleSelectBtn }) => {
+    // console.log(course)
     const { image_link, title, description, price, credit_hours } = course
     return (
         <div className='border-2 bg-[#FFF] rounded-xl p-4 max-w-[300px] relative '>
@@ -10,16 +10,17 @@ const SingleCard = ({ course }) => {
             <h2 className='font-semibold text-lg mt-4'>{title}</h2>
             <p className='font-normal text-sm text-[#1C1B1B99] mt-3'>{description}</p>
             <div className='flex justify-between items-center mt-5'>
-                <p className='flex justify-between items-center'><FiDollarSign></FiDollarSign> Price : {price}</p>
-                <p className='flex justify-between items-center'> <GoBook></GoBook> {credit_hours}</p>
+                <button className='flex justify-between items-center gap-3'><FiDollarSign className='text-2xl'></FiDollarSign> Price : {price}</button>
+                <button className='flex justify-between items-center gap-3'> <GoBook className='text-2xl'></GoBook> {credit_hours}</button>
             </div>
             <div className='bottom-4 w-full'>
-                <button className='bg-[#2F80ED] w-full h-10 border border-[#2F80ED] rounded-lg mt-6'>Select</button>
+                <button onClick={() => handleSelectBtn(course)} className='bg-[#2F80ED] w-full h-10 border border-[#2F80ED] rounded-lg mt-6 text-white font-semibold text-lg'>Select</button>
             </div>
         </div>
     );
 };
 SingleCard.propTypes = {
-    course: PropTypes.object.isRequired
+    course: PropTypes.object.isRequired,
+    handleSelectBtn: PropTypes.func
 }
 export default SingleCard;
