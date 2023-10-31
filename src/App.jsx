@@ -5,16 +5,25 @@ import Cart from './components/Cart/Cart'
 import Header from './components/Header/Header'
 
 function App() {
-  const [cartData, setCartData] = useState([])
+  const [cartData, setCartData] = useState([]);
+  const [creditHour, setCreditHour] = useState(0);
+  const [remainingHour, setRemainingHour] = useState(20)
   const handleSelectBtn = (id) => {
-    // console.log("select btn clicked", id);
-    // const newCart = [...cartData, id];
-    let final = [];
-    let isAvailable = cartData.find(data => data.title === id.title);
+    let totalCreditHour = parseFloat(creditHour) + parseFloat(id.credit_hours);
+    let remaining = remainingHour - parseFloat(id.credit_hours);
+    let isAvailable = cartData.find(data => data.id === id.id);
     if (!isAvailable) {
       const newCart = [...cartData, id];
+      // setCartData(newCart);
+      if (totalCreditHour > 20) {
+        alert("Credit hour time over")
+      }
+      else {
+        setCreditHour(totalCreditHour);
+        setRemainingHour(remaining)
+        setCartData(newCart);
 
-      setCartData(newCart)
+      }
 
     }
     else {
@@ -29,7 +38,7 @@ function App() {
           <Card handleSelectBtn={handleSelectBtn}></Card>
         </div>
         <div className='relative'>
-          <Cart cartData={cartData}></Cart>
+          <Cart cartData={cartData} creditHour={creditHour} remainingHour={remainingHour}></Cart>
         </div>
       </div>
     </>
