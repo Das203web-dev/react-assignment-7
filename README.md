@@ -7,9 +7,9 @@
 * Also you can see the total price on the total price field by clicking the same  button.
 * You can not add more then 20 credit hours..But if you try to add then a alert will be displayed.
 
-## Question 2. Discuss how you managed the state in your assignment project
+# Question 2. Discuss how you managed the state in your assignment project
 
-# Ans : Here i discussed about how i managed the states of this project
+## Ans : Here i discussed about how i managed the states of this project
 
 * At first I have declared a state inside Card component to stored and load the whole data on the UI by using useEffect.
 
