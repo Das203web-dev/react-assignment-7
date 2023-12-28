@@ -19,9 +19,5 @@
 
 * And the rest of the states i declared inside the App component because of the same reason. Cause i have to pass the data from Card component to Cart component and the App component is the parent component of both Card and Cart component thats why i declared all the states there and share the data by passing it through child components...
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Live Site Link
+https://ambiguous-spy.surge.sh/
